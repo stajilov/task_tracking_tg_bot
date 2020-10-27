@@ -7,15 +7,17 @@ import { TasksService } from './tasks.service'
 
 @Controller('tasks')
 export class TasksController {
-  constructor(private readonly tasksService: TasksService,private readonly usersService:  UsersService ) {}
+  constructor(private readonly tasksService: TasksService, private readonly usersService:  UsersService ) {}
 
     @Post()
-    async create(@Body() createTaskDto: CreateTaskDto) {
+    async create(@Body() createTaskDto: CreateTaskDto) : Promise<Task> {
 
-        let comps: string[] = createTaskDto.description.split("|")
-        let u : User = await  this.usersService.findByUserName(comps[0])
-        
-        return 'OK';
+        //username|project|title|comment|time
+        console.log(createTaskDto)
+        const comps: string[] = createTaskDto.description.split("|")
+        const userName :string = comps[0]
+        const u : User = await this.usersService.createOrInsertByUsername(userName)
+        return this.tasksService.create(comps[1], comps[2],comps[3], comps[4], u)
     }
 
  

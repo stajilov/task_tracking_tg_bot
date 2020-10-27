@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Double} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Double, CreateDateColumn,
+  UpdateDateColumn,} from 'typeorm';
 import { User } from '../users/user.entity'
 
 @Entity()
@@ -16,12 +17,16 @@ export class Task {
   comment: string;
 
   @Column()
-  time: Double;
+  time: Number;
 
   @ManyToOne(() => User, user => user.tasks)
   user: User;
 
-  @Column('timestamp with time zone', { nullable: false, default: () => 'CURRENT_TIMESTAMP' })  
-  created_at: Date;
+  @Column()
+  @CreateDateColumn()
+  created_at!: Date;
 
+  @Column()
+  @UpdateDateColumn()
+  updated_at!: Date;
 }
