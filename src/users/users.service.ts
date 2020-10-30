@@ -32,16 +32,18 @@ export class UsersService {
     await this.usersRepository.delete(id);
   }
 
-  createOrInsertByUsername(name : string): Promise<User> {
+  async createOrInsertByUsername(name : string): Promise<User> {
       try {
-        return this.usersRepository.findOneOrFail({ username: name });
+        console.log(name);
+        const u = await this.usersRepository.findOneOrFail({ where: {username: name } });    
+        console.log(u);
+        return u;
       } catch (error) {
-        console.log(error)
-      }
-      finally {
+        console.log("Creating new user")
         const user = new User;
         user.username = name
-        return this.usersRepository.save(user);
+        console.log(user);
+        return await this.usersRepository.save(user);
       }
   }
 }
