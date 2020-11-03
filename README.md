@@ -28,6 +28,7 @@ Features:
 
 TODO:
 - Stripe integration
+- Docker swarm
 
 
 

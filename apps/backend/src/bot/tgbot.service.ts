@@ -19,7 +19,7 @@ export class TgBotService implements OnModuleInit {
         const bot = new TelegramBot(token, { polling: true });
         
         bot.on('message', async (msg) => {
-        let hi = "hi";
+        const hi = "hi";
         console.log(msg)
         if (msg.text.toString().toLowerCase().indexOf(hi) === 0) {
             bot.sendMessage(msg.from.id, `Hello ${msg.from.first_name}, ` + `Can you plaese track your time in this format username|project|title|comment|time ?`);

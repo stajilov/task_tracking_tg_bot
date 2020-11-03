@@ -17,7 +17,7 @@ export class Task {
   comment: string;
 
   @Column()
-  time: Number;
+  time: number;
 
   @ManyToOne(() => User, user => user.tasks)
   user: User;
