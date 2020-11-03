@@ -1,6 +1,10 @@
-# Boilerplate
+# Cyber Whale typescript full stack nx Boilerplate
 
 This project was generated using [Nx](https://nx.dev).
+
+
+
+`nx serve backend | nx serve admin-pannel`
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 

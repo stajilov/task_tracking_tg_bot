@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { TasksService } from 'src/tasks/tasks.service';
-import { TrackerModule } from 'src/tracker/tracker.module';
-import { TrackerService } from 'src/tracker/tracker.service';
-import { UsersService } from 'src/users/users.service';
+import { TasksService } from '../tasks/tasks.service';
+import { TrackerModule } from '../tracker/tracker.module';
+import { TrackerService } from '../tracker/tracker.service';
+import { UsersService } from '../users/users.service';
 import { TgBotService } from './tgbot.service';
 import { Task } from '../tasks/task.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';

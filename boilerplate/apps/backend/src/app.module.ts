@@ -14,7 +14,7 @@ import { TgbotModule } from './bot/tgbot.module';
 import { TrackerModule } from './tracker/tracker.module';
 
 @Module({
-  imports: [
+  imports: [UsersModule, 
     TypeOrmModule.forRoot({
         type: 'postgres',
         host: 'localhost',
@@ -22,11 +22,11 @@ import { TrackerModule } from './tracker/tracker.module';
         username: 'postgres',
         password: 'AdvancedStuff!!#love',
         database: 'dotnetappdb',
-        entities: [User, Task],
+        entities: [Task, User],
         synchronize: true,
         autoLoadEntities: true
   }), ConfigModule.forRoot({isGlobal: true}),
-    UsersModule, 
+    
     TasksModule, TgbotModule, TrackerModule
   ],
   controllers: [AppController],

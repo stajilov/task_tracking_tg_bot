@@ -7,7 +7,7 @@ import { User } from '../users/user.entity';
 import { UsersModule } from '../users/users.module';
 import { UsersService } from '../users/users.service';
 import { TrackerModule } from '../tracker/tracker.module';
-import { TrackerService } from 'src/tracker/tracker.service';
+import { TrackerService } from '../tracker/tracker.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Task]), UsersModule, TrackerModule ],
