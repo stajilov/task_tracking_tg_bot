@@ -2,9 +2,36 @@
 
 This project was generated using [Nx](https://nx.dev).
 
-
-
+To run the apps:
 `nx serve backend | nx serve admin-pannel`
+
+Hi!
+
+This is Cyber Whale team!
+<p align="left"><img src="https://cyberwhale.tech/img/Logo1.png" width="200"></p>
+
+We decided to create a feature rich boilerplate for our fullstack apps powered by `nx monorepo` and `docker swarm`
+
+The apps we use in our projects are:
+- backend (nest)
+- admin pannel (react)
+- front office (react)
+
+Will be adding more apps and services as we develop the boilderplate.
+
+Features:
+- Users, Roles, Login, Admin login
+- Admin backoffice
+- Domain model (demo)
+- Docker swarm services architecture
+- Telegram bot for notifications and generic purposes
+
+TODO:
+- Stripe integration
+
+
+
+
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
