@@ -7,7 +7,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import { lazy, Suspense } from 'react';
 
-
+import { Button } from 'antd';
 
 
 
@@ -19,30 +19,32 @@ import {
   Switch,
   Route,
   Link
-} from "react-router";
+} from "react-router-dom";
+import Dashboard from '../pages/dashboard/dashboard';
+import Users from '../pages/users/users';
+import Tasks from '../pages/tasks/tasks';
+import Login from '../pages/login/login';
 
 class App extends React.Component{
 
   render() {
       return (
         <>
+        <Router>
 
         <Layout>
-        <Router>
         <Header className="header">
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-            
-            <Menu.Item key="1">Dashboard</Menu.Item>
-            <Menu.Item key="2">Users</Menu.Item>
-            <Menu.Item key="3">Tasks</Menu.Item>
-
+            <Menu.Item key="1"><Link to="/">Dashboard</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/users">Users</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/tasks">Tasks</Link></Menu.Item>
           </Menu>
+
+          <Button type="primary">Logout</Button>
         </Header>
+
       
-    </Router>
-
-
         <Layout>
           <Sider width={200} className="site-layout-background">
             <Menu
@@ -81,10 +83,26 @@ class App extends React.Component{
 
             <Content>
 
+            <Switch>
+              <Route exact path="/">
+                <Dashboard />
+              </Route>
+              <Route path="/users">
+                <Users />
+              </Route>
+              <Route path="/tasks">
+                <Tasks />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+            </Switch>
+
             </Content>
           </Layout>
         </Layout>
       </Layout>
+      </Router>
       </>
       );
       }
