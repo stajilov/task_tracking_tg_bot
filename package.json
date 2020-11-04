@@ -34,6 +34,7 @@
     "@nestjs/typeorm": "^7.1.4",
     "antd": "^4.8.0",
     "document-register-element": "1.13.1",
+    "nestjs-typeorm-paginate": "^2.2.1",
     "next": "^10.0.0",
     "node-telegram-bot-api": "^0.50.0",
     "pg": "^8.4.1",

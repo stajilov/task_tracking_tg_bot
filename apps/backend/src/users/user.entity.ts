@@ -22,4 +22,7 @@ export class User {
 
   @OneToMany(type => Task, task => task.user)
   tasks: Task[];
+
+  @OneToMany(type => Task, task => task.created_by)
+  created_tasks: Task[];
 }
