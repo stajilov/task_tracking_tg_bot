@@ -1,16 +1,20 @@
 import React from 'react';
+import UserList from '../../ui-components/user-list/user-list';
 
 import './users.scss';
 
 /* eslint-disable-next-line */
 export interface UsersProps {}
 
-export const Users = (props: UsersProps) => {
-  return (
-    <div>
-      <h1>Welcome to users!</h1>
-    </div>
+export class Users extends React.Component {
+  render() {
+    return (
+    
+    <UserList>
+      
+    </UserList>
   );
-};
+  }
+}
 
 export default Users;
