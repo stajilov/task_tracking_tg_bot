@@ -3,7 +3,7 @@
 This project was generated using [Nx](https://nx.dev).
 
 To run the apps:
-`nx serve backend | nx serve admin-pannel`
+`nx serve backend | nx serve admin-pannel | nx serve front-office`
 
 Hi!
 

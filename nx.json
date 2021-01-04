@@ -32,6 +32,13 @@
     },
     "backend": {
       "tags": []
+    },
+    "front-office": {
+      "tags": []
+    },
+    "front-office-e2e": {
+      "tags": [],
+      "implicitDependencies": ["front-office"]
     }
   }
 }
