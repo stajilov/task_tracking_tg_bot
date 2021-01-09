@@ -14,15 +14,30 @@ export class User {
   @Column(({ nullable: true }))
   lastName: string;
 
-  @Column()
+  @Column({ unique: true })
+  email: string;
+
+  @Column({ unique: true })
   username: string;
 
-  @Column({ default: true })
+  @Column(({ nullable: false }))
+  password: string;
+
+  @Column({ default: false })
   isActive: boolean;
+
+  @Column({ default: false })
+  isAdmin: boolean;
+
+  @Column({ default: false })
+  isManager: boolean;
 
   @OneToMany(type => Task, task => task.user)
   tasks: Task[];
 
   @OneToMany(type => Task, task => task.created_by)
   created_tasks: Task[];
+
+
+
 }

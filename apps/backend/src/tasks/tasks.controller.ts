@@ -7,6 +7,7 @@ import { TasksService } from './tasks.service'
 import { TrackerService } from '../tracker/tracker.service';
 
 import { Pagination } from 'nestjs-typeorm-paginate';
+import { Public } from '../auth/auth-general.guard';
 
 
 @Controller('tasks')
@@ -17,7 +18,7 @@ export class TasksController {
     private readonly trackerService : TrackerService
     ) {}
 
-
+    @Public()
     @Get('')
     async index(
       @Query('page') page: number = 1,
@@ -30,7 +31,7 @@ export class TasksController {
         route: '/tasks',
       });
     }
-
+    
     @Post()
     async create(@Body() createTaskDto: CreateTaskDto) : Promise<Task> {
         //username|project|title|comment|time

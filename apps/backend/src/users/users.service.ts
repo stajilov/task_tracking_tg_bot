@@ -25,11 +25,28 @@ export class UsersService {
     return this.usersRepository.findOne({ 
         where: { username: userName} 
     });
+  }
 
+
+  findByEmail(email: string): Promise<User> {
+    return this.usersRepository.findOneOrFail({ 
+        where: { email: email} 
+    });
   }
 
   async remove(id: string): Promise<void> {
     await this.usersRepository.delete(id);
+  }
+
+  async createUser(email : string, username : string, password : string) : Promise<User> {
+
+    const user = new User;
+    user.email = email;
+    user.username = username;
+    user.password = password;
+    console.log(user);
+    return await this.usersRepository.save(user);
+
   }
 
   async createOrInsertByUsername(name : string): Promise<User> {

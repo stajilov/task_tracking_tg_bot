@@ -12,6 +12,7 @@ import { Task } from './tasks/task.entity';
 import { ConfigModule } from '@nestjs/config';
 import { TgbotModule } from './bot/tgbot.module';
 import { TrackerModule } from './tracker/tracker.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [UsersModule, 
@@ -20,14 +21,14 @@ import { TrackerModule } from './tracker/tracker.module';
         host: 'localhost',
         port: 5432,
         username: 'postgres',
-        password: 'AdvancedStuff!!#love',
-        database: 'dotnetappdb',
+        password: 'postgres',
+        database: 'boilerplatedb',
         entities: [Task, User],
         synchronize: true,
         autoLoadEntities: true
   }), ConfigModule.forRoot({isGlobal: true}),
     
-    TasksModule, TgbotModule, TrackerModule
+    TasksModule, TgbotModule, TrackerModule, AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
