@@ -19,16 +19,59 @@ services:
       - .env
     networks:
       - db_nw
+  
+  redis:
+    image: "redis:alpine"
+    command: redis-server --requirepass 2332342ff444333S
+    ports:
+     - "6379:6379"
+    volumes:
+      - $PWD/redis-data:/var/lib/redis
+      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
 
+    environment:
+     - REDIS_REPLICATION_MODE=master
+  
   backend:
-    build: .
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
     env_file:
       - .env
+    ports:
+     - "3000:3000"
     networks:
       - db_nw
       - web_nw
     depends_on:
       - db
+
+  front:
+    build:
+      context: .
+      dockerfile: ./apps/front-office/Dockerfile
+    env_file:
+      - .env
+    ports:
+     - "4200:80"
+    networks:
+      - web_nw
+    depends_on:
+      - backend
+
+  admin:
+    build:
+      context: .
+      dockerfile: ./apps/admin-pannel/Dockerfile
+    env_file:
+      - .env
+    ports:
+     - "4300:80"
+    networks:
+      - web_nw
+    depends_on:
+      - backend
+  
 
 networks:
   db_nw:
