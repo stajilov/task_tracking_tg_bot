@@ -248,6 +248,105 @@
           }
         }
       }
+    },
+    "placeholder-page": {
+      "root": "apps/placeholder-page",
+      "sourceRoot": "apps/placeholder-page/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/placeholder-page",
+            "index": "apps/placeholder-page/src/index.html",
+            "main": "apps/placeholder-page/src/main.tsx",
+            "polyfills": "apps/placeholder-page/src/polyfills.ts",
+            "tsConfig": "apps/placeholder-page/tsconfig.app.json",
+            "assets": [
+              "apps/placeholder-page/src/favicon.ico",
+              "apps/placeholder-page/src/assets"
+            ],
+            "styles": ["apps/placeholder-page/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/placeholder-page/src/environments/environment.ts",
+                  "with": "apps/placeholder-page/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "placeholder-page:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "placeholder-page:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/placeholder-page/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/placeholder-page/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "placeholder-page-e2e": {
+      "root": "apps/placeholder-page-e2e",
+      "sourceRoot": "apps/placeholder-page-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/placeholder-page-e2e/cypress.json",
+            "tsConfig": "apps/placeholder-page-e2e/tsconfig.e2e.json",
+            "devServerTarget": "placeholder-page:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "placeholder-page:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/placeholder-page-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {
