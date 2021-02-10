@@ -39,6 +39,13 @@
     "front-office-e2e": {
       "tags": [],
       "implicitDependencies": ["front-office"]
+    },
+    "placeholder-page": {
+      "tags": []
+    },
+    "placeholder-page-e2e": {
+      "tags": [],
+      "implicitDependencies": ["placeholder-page"]
     }
   }
 }
